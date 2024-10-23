@@ -2,10 +2,15 @@ import fastifySwagger from "@fastify/swagger";
 import fastify, { FastifyInstance } from "fastify";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import { registerControllers } from "./http";
+import { DataSource } from "typeorm";
 
 export { setupApp };
 
-const setupApp = async () => {
+type AppDeps = {
+  dbDataSource: DataSource;
+};
+
+const setupApp = async ({ dbDataSource }: AppDeps) => {
   const app = fastify({
     logger: {
       level: "info",
@@ -38,7 +43,7 @@ const setupApp = async () => {
 
   await registerPlugins(app);
 
-  registerControllers(app);
+  registerControllers(app)({ dbDataSource });
 
   return app;
 };
