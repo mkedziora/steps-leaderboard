@@ -1,27 +1,13 @@
-import { DataSource } from "typeorm";
+import { createDataSourceConnection } from "./db/dataSource";
 
 export { globalDepsFactory };
 const globalDepsFactory = async () => {
-  const dataSource = await createDataSourceConnection();
+  const dataSource = await initializeDb();
   return {
     dbDataSource: dataSource,
   };
 };
 
-const createDataSourceConnection = async () => {
-  const dataSource = new DataSource({
-    type: "postgres",
-    host: process.env.DATABASE_HOST,
-    port: 5432,
-    username: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_NAME,
-    synchronize: true,
-    logging: true,
-    entities: [],
-    subscribers: [],
-    migrations: [],
-  });
-  await dataSource.initialize();
-  return dataSource;
+const initializeDb = async () => {
+  return createDataSourceConnection();
 };
