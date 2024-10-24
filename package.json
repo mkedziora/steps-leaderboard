@@ -6,13 +6,15 @@
     "start": "node -r @swc-node/register --watch src/server.ts",
     "lint": "tsc --noEmit && eslint \"**/*.ts\" --quiet --fix",
     "dev": "npm run build && npm run start",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "seed": "ts-node src/db/seeds/init.seed.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.13.0",
+    "@faker-js/faker": "^9.0.3",
     "@fastify/type-provider-typebox": "^5.0.0",
     "@swc-node/register": "^1.10.9",
     "@swc/cli": "^0.4.1-nightly.20240914",
@@ -31,6 +33,7 @@
     "dotenv": "^16.4.5",
     "fastify": "^5.0.0",
     "pg": "^8.13.0",
-    "typeorm": "^0.3.20"
+    "typeorm": "^0.3.20",
+    "typeorm-extension": "^3.6.2"
   }
 }

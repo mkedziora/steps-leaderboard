@@ -70,6 +70,7 @@ const registerSwagger = async (app: FastifyInstance) => {
       ],
       tags: [
         { name: "health", description: "Status check related end-points" },
+        { name: "counter", description: "Counter related end-points" },
       ],
     },
   });

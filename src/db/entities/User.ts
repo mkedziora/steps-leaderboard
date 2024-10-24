@@ -10,9 +10,6 @@ export class User {
   @Column()
   email: string;
 
-  @Column()
-  authProviderId: string;
-
   @ManyToOne(() => Team, (team) => team.users)
   team: Team;
 
