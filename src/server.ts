@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { FastifyInstance } from "fastify";
 import { setupApp } from "./app";
 import dotenv from "dotenv";

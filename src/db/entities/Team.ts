@@ -1,4 +1,10 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Relation,
+} from "typeorm";
 import { User } from "./User";
 
 @Entity()
@@ -6,9 +12,9 @@ export class Team {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column()
+  @Column('varchar')
   name: string;
 
   @OneToMany(() => User, (user) => user.team)
-  users: User[];
+  users: Relation<User>[];
 }

@@ -21,9 +21,9 @@ const createDataSourceConnection = async () => {
   const dbOptions: DataSourceOptions & SeederOptions = {
     type: "postgres",
     host: DATABASE_HOST || "localhost",
-    port: Number(DATABASE_PORT) || 3306,
-    username: DATABASE_USER || "test",
-    password: DATABASE_PASSWORD || "test",
+    port: Number(DATABASE_PORT) || 5432,
+    username: DATABASE_USER || "postgres",
+    password: DATABASE_PASSWORD || "postgres",
     database: DATABASE_NAME || "test",
     synchronize: true,
     logging: true,

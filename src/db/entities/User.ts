@@ -1,4 +1,11 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Relation,
+} from "typeorm";
 import { Counter } from "./Counter";
 import { Team } from "./Team";
 
@@ -7,12 +14,12 @@ export class User {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column()
+  @Column('varchar')
   email: string;
 
   @ManyToOne(() => Team, (team) => team.users)
-  team: Team;
+  team: Relation<Team>;
 
   @OneToMany(() => Counter, (counter) => counter.user, { cascade: true })
-  counters: Counter[];
+  counters: Relation<Counter>[];
 }

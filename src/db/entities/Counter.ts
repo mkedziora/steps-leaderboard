@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  Relation,
+} from "typeorm";
 import { User } from "./User";
 
 @Entity()
@@ -6,9 +12,9 @@ export class Counter {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
-  @Column()
+  @Column("varchar", { nullable: true })
   value: number;
 
   @ManyToOne(() => User, (user) => user.counters)
-  user: User;
+  user: Relation<User>;
 }

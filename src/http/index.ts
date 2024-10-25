@@ -10,6 +10,7 @@ import {
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 import { Type } from "@sinclair/typebox";
 import { DataSource } from "typeorm";
+import { registerCounterControllers } from "./counters";
 
 export { registerControllers };
 
@@ -26,6 +27,7 @@ const registerControllers =
   (app: FastifyInstance) =>
   ({ dbDataSource }: { dbDataSource: DataSource }) => {
     registerStatusCheck(app)({ dbDataSource });
+    registerCounterControllers(app)({ dbDataSource });
   };
 
 const registerStatusCheck =
